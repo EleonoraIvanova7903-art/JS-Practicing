@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Check</title>
+    <style>
+      body {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        max-width: 360px;
+        margin: 40px auto;
+        padding: 16px;
+        border: 1px solid #ccc;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      input {
+        padding: 16px;
+        width: 80%;
+        margin-bottom: 12px;
+      }
+      button {
+        padding: 8px 12px;
+      }
+      /* p {
+        margin-top: 12px;
+      } */
+    </style>
+  </head>
+  <body>
+    <h2>Age Check</h2>
+    <label for="">Enter a number</label>
+    <input type="number" name="" id="age" placeholder="Enter your age" />
+    <button id="btn">Check</button>
+    <p id="result"></p>
+
+    <script>
+      const checkBtn = document.getElementById("btn");
+      const result = document.getElementById("result");
+
+      checkBtn.addEventListener("click", () => {
+        const age = Number(document.getElementById("age").value);
+
+        if (age < 18) {
+          result.textContent = "Access denied";
+        } else {
+          result.textContent = "Welcome!";
+        }
+      });
+    </script>
+  </body>
+</html>
