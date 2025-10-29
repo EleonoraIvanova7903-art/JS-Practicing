@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For: Build Option</title>
+  </head>
+  <body>
+    <h2>Build Option</h2>
+    <button id="btn-make">Make</button>
+    <select name="" id="colors"></select>
+
+    <script>
+      const btnMake = document.getElementById("btn-make");
+      const colors = document.getElementById("colors");
+
+      btnMake.addEventListener("click", () => {
+        colors.innerHTML = "";
+        const items = ["red", "green", "blue", "yellow", "black"];
+
+        for (let i = 0; i < items.length; i++) {
+          const opt = document.createElement("option");
+
+          opt.value = items[i];
+          opt.textContent = items[i];
+          colors.appendChild(opt);
+        }
+      });
+    </script>
+  </body>
+</html>

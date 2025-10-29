@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For: Build List</title>
+  </head>
+  <body>
+    <h2>Build List</h2>
+    <button id="btn-list">Build List</button>
+    <ul id="list"></ul>
+
+    <script>
+      const btnList = document.getElementById("btn-list");
+      const ulList = document.getElementById("list");
+
+      btnList.addEventListener("click", () => {
+        ulList.innerHTML = "";
+        const words = ["apple", "banana", "grape", "lemon", "melon", "orange"];
+
+        for (let i = 0; i < words.length; i++) {
+          const list = document.createElement("li");
+          list.textContent = words[i];
+          ulList.appendChild(list);
+        }
+      });
+    </script>
+  </body>
+</html>
