@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Name Greeting</title>
+  </head>
+  <body>
+    <h2>Name Greeting</h2>
+    <label for="name">Enter your Name</label>
+    <input type="text" name="name" id="name" />
+    <button id="btn-name">Greet</button>
+    <p id="result"></p>
+
+    <script>
+      const btnName = document.getElementById("btn-name");
+      const result = document.getElementById("result");
+
+      btnName.addEventListener("click", () => {
+        const name = document.getElementById("name").value.trim();
+
+        if (name === "") {
+          result.textContent = "Please enter a name.";
+        } else if (name === "Admin") {
+          result.textContent = "Hello, Admin";
+        } else {
+          result.textContent = `Hello, ${name}`;
+        }
+      });
+    </script>
+  </body>
+</html>
