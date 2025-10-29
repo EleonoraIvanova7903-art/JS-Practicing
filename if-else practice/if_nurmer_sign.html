@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Sign</title>
+  </head>
+  <body>
+    <h2>Number Sign</h2>
+    <label for="number">Enter a number:</label>
+    <input type="number" name="number" id="num-sign" />
+    <button id="btn-num">Check</button>
+    <p id="result"></p>
+
+    <script>
+      const result = document.getElementById("result");
+      const btnNum = document.getElementById("btn-num");
+
+      btnNum.addEventListener("click", () => {
+        const num = Number(document.getElementById("num-sign").value);
+
+        if (num < 0) {
+          result.textContent = "Negative";
+        } else if (num === 0) {
+          result.textContent = "Zero";
+        } else {
+          result.textContent = "Positive";
+        }
+      });
+    </script>
+  </body>
+</html>
