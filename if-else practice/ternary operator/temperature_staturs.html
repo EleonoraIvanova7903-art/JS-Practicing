@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Stutes</title>
+  </head>
+  <body>
+    <h2>Temperature Stutes</h2>
+    <label for="temp">Enter a temperature</label>
+    <input
+      type="number"
+      name="temp"
+      id="temp"
+      placeholder="Enter a temperature"
+    />
+    <button id="btn-temp">Check</button>
+    <p id="result"></p>
+
+    <script>
+      const btnTemp = document.getElementById("btn-temp");
+      const result = document.getElementById("result");
+
+      btnTemp.addEventListener("click", () => {
+        const temp = Number(document.getElementById("temp").value);
+
+        result.textContent =
+          temp < 0 ? "Freezing" : temp <= 25 ? "Normal" : "Hot";
+      });
+    </script>
+  </body>
+</html>

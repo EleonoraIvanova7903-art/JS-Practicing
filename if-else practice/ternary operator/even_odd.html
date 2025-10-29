@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Even and Odd</title>
+  </head>
+  <body>
+    <h2>Even and Odd</h2>
+    <label for="number">Enter a number:</label>
+    <input type="number" name="number" id="number" />
+    <button id="btn">Check</button>
+    <p id="result"></p>
+
+    <script>
+      const btn = document.getElementById("btn");
+      const result = document.getElementById("result");
+
+      btn.addEventListener("click", () => {
+        const number = Number(document.getElementById("number").value);
+
+        result.textContent = number % 2 === 0 ? "Even" : "Odd";
+      });
+    </script>
+  </body>
+</html>
