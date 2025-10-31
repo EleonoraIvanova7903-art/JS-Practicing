@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Length</title>
+  </head>
+  <body>
+    <h2>Text Length</h2>
+    <label for="Text">Enter some text:</label>
+    <input type="text" name="" id="text" />
+    <button id="btn-count">Count</button>
+    <p id="result"></p>
+
+    <script>
+      const btnCount = document.getElementById("btn-count");
+      const result = document.getElementById("result");
+
+      function getLength(text) {
+        return text.length;
+      }
+
+      btnCount.addEventListener("click", () => {
+        const inputText = document.getElementById("text").value;
+        result.textContent = inputText
+          ? "Text length: " + getLength(inputText)
+          : "Please enter some text.";
+      });
+    </script>
+  </body>
+</html>
