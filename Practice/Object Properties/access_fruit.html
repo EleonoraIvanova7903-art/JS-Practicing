@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessing Object Properties</title>
+  </head>
+  <body>
+    <h2>Fruit Information</h2>
+    <p id="name"></p>
+    <p id="color"></p>
+    <p id="vitamin"></p>
+
+    <button id="btn-show">Show Info</button>
+
+    <script>
+      // Object with three properties
+      const fruit = {
+        name: "Orang",
+        color: "orange",
+        vitamin: "C",
+      };
+      const btnShow = document.getElementById("btn-show");
+
+      btnShow.addEventListener("click", () => {
+        document.getElementById("name").textContent = "Name: " + fruit.name;
+        document.getElementById("color").textContent = "Color: " + fruit.color;
+        document.getElementById("vitamin").textContent =
+          "Vitaming: " + fruit.vitamin;
+      });
+    </script>
+  </body>
+</html>
