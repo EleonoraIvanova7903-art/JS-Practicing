@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Positive or Negatice</title>
+  </head>
+  <body>
+    <h2>Positive or Negative</h2>
+    <label for="number">Enter a number:</label>
+    <input type="number" name="" id="number" />
+    <button id="btn-check">Check</button>
+    <p id="result"></p>
+
+    <script>
+      const btnCheck = document.getElementById("btn-check");
+      const result = document.getElementById("result");
+
+      function checkNumber() {
+        const value = Number(document.getElementById("number").value);
+
+        if (Number != isNaN(value)) {
+          result.textContent = "Please enter a valid number.";
+          return;
+        }
+
+        if (value > 0) {
+          result.textContent = "The number is positiv.";
+        } else if (value < 0) {
+          result.textContent = "The number is negative.";
+        } else {
+          result.textContent = "The number is 0";
+        }
+      }
+      btnCheck.addEventListener("click", checkNumber);
+    </script>
+  </body>
+</html>
