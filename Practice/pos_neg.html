@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Positive and Negative Number</title>
+  </head>
+  <body>
+    <h2>Positive and Negative</h2>
+    <label for="">Enter a number:</label>
+    <input type="number" name="" id="number" />
+    <button id="btn-check">Check</button>
+    <p id="result"></p>
+
+    <script>
+      const btnCheck = document.getElementById("btn-check");
+      const result = document.getElementById("result");
+
+      function checkNumber() {
+        const inputValue = document.getElementById("number").value;
+
+        if (inputValue === "") {
+          result.textContent = "Pleace enter a number.";
+          return;
+        }
+
+        const number = Number(inputValue);
+        if (number < 0) {
+          result.textContent = "The number is Negative.";
+        } else if (number > 0) {
+          result.textContent = "The number is Positive.";
+        } else {
+          result.textContent = "The number is Zero.";
+        }
+      }
+
+      btnCheck.addEventListener("click", checkNumber);
+    </script>
+  </body>
+</html>
