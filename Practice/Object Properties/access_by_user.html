@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessing Object Properties by <Input></Input></title>
+  </head>
+  <body>
+    <h2>FRuit Properties</h2>
+    <p>Available properties: name, color, vitamin</p>
+
+    <input
+      type="text"
+      name=""
+      id="property-input"
+      placeholder="Enter property name"
+    />
+    <button id="btn-show">Show Value</button>
+    <p id="result"></p>
+
+    <script>
+      const fruit = { name: "Orange", color: "orange", vitamin: "C" };
+      const btnShow = document.getElementById("btn-show");
+      const result = document.getElementById("result");
+      const input = document.getElementById("property-input");
+
+      btnShow.addEventListener("click", () => {
+        const propertyName = input.value.trim();
+
+        if (propertyName === "") {
+          result.textContent = "Pleace enter a property name.";
+          return;
+        }
+
+        if (fruit[propertyName] !== undefined) {
+          result.textContent = `Value: ${fruit[propertyName]}`;
+        } else {
+          result.textContent = "Property not found.";
+        }
+      });
+    </script>
+  </body>
+</html>
