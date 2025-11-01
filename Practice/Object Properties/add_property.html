@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding New Properties</title>
+  </head>
+  <body>
+    <h2>Fruit Object</h2>
+    <p>Start with two properties: name and color</p>
+
+    <label for="prop-name">Property name:</label>
+    <input type="text" name="" id="prop-name" placeholder="e.g. taste" />
+    <br /><br />
+    <label for="prop-value">Property value:</label>
+    <input type="text" id="prop-value" placeholder="e.g. sweet" />
+    <br /><br />
+
+    <button id="btn-add">Add Property</button>
+    <p id="result"></p>
+
+    <script>
+      const fruit = { name: "Apple", color: "red" };
+      const btnAdd = document.getElementById("btn-add");
+      const result = document.getElementById("result");
+
+      function showFruit() {
+        let text = "";
+
+        for (let key in fruit) {
+          text += `${key}: ${fruit[key]}, `;
+        }
+        result.textContent = text.slice(0, -2);
+      }
+      btnAdd.addEventListener("click", () => {
+        const propName = document.getElementById("prop-name").value.trim();
+        const propValue = document.getElementById("prop-value").value.trim();
+
+        if (propName === "" || propValue === "") {
+          result.textContent = "Pleace enter both property and value";
+          return;
+        }
+
+        fruit[propName] = propValue;
+        showFruit();
+      });
+    </script>
+  </body>
+</html>
