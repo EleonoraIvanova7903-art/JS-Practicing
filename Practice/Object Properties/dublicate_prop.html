@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check for Dublicate Property</title>
+  </head>
+  <body>
+    <h2>Fruit Object</h2>
+    <p>Try adding a property that already exists to see the message.</p>
+    <label for="prop-name">Property Name:</label>
+    <input type="text" id="prop-name" placeholder="e.g. color" />
+
+    <label for="porp-value">Proplerty Value:</label>
+    <input type="text" name="" id="prop-value" placeholder="e.g. red" />
+
+    <button id="btn-add">Add Proporty</button>
+    <button id="btn-remove">Remove Property</button>
+    <p id="result"></p>
+
+    <script>
+      const fruit = { name: "Aple", color: "red" };
+      const inputName = document.getElementById("prop-name");
+      const inputValue = document.getElementById("prop-value");
+      const btnAdd = document.getElementById("btn-add");
+      const btnRemove = document.getElementById("btn-remove");
+      const result = document.getElementById("result");
+
+      function showFruit() {
+        let text = "";
+        for (const key in fruit) {
+          text += `${key}: ${fruit[key]}, `;
+        }
+        result.textContent = text.slice(0, -2);
+      }
+
+      btnAdd.addEventListener("click", () => {
+        const propName = inputName.value.trim();
+        const propValue = inputValue.value.trim();
+
+        if (propName === "" || propValue === "") {
+          result.textContent = "Please enter both property and value.";
+          return;
+        }
+        if (propName in fruit) {
+          result.textContent = "This property already exists";
+          return;
+        }
+        fruit[propName] = propValue;
+        showFruit();
+      });
+      btnRemove.addEventListener("click", () => {
+        const propName = inputName.value.trim();
+        if (propName in fruit) {
+          delete fruit[propName];
+          showFruit();
+        } else {
+          result.textContent = "Property not found";
+        }
+      });
+      showFruit();
+    </script>
+  </body>
+</html>
