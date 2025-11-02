@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Property: Table viewport</title>
+  </head>
+  <body>
+    <h2>Fruit Object</h2>
+    <p>The table updates whenever you add or remove a property.</p>
+    <label for="prop-name">Property name:</label>
+    <input type="text" id="prop-name" placeholder="e.g. taste" />
+    <br /><br />
+    <label for="prop-value">Property Value:</label>
+    <input type="text" name="" id="prop-value" placeholder="e.g. sweet" />
+    <br /><br />
+
+    <button id="btn-add">Add Property</button>
+    <button id="btn-remove">Remove Property</button>
+    <button id="btn-reset">Reset Object</button>
+    <p id="message"></p>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <script>
+      const fruit = { name: "Apple", color: "red" };
+
+      const inputPropName = document.getElementById("prop-name");
+      const inputPropValue = document.getElementById("prop-value");
+      const btnAdd = document.getElementById("btn-add");
+      const btnRemove = document.getElementById("btn-remove");
+      const btnReset = document.getElementById("btn-reset");
+      const message = document.getElementById("message");
+      const tableBody = document.getElementById("table-body");
+
+      function renderTable() {
+        tableBody.innerHTML = "";
+        for (const key in fruit) {
+          const row = document.createElement("tr");
+          const cellKey = document.createElement("td");
+          const cellValue = document.createElement("td");
+
+          cellKey.textContent = key;
+          cellValue.textContent = fruit[key];
+
+          row.appendChild(cellKey);
+          row.appendChild(cellValue);
+          tableBody.appendChild(row);
+        }
+      }
+      function showMessage(text) {
+        message.textContent = text;
+      }
+
+      btnAdd.addEventListener("click", () => {
+        const propName = inputPropName.value.trim();
+        const propValue = inputPropValue.value.trim();
+
+        if (propName === "" || propValue === "") {
+          showMessage("Please enter both property name and value");
+          return;
+        }
+        fruit[propName] = propValue;
+        renderTable();
+        showMessage(`Added/updated: ${propName}`);
+      });
+
+      btnRemove.addEventListener("click", () => {
+        const propName = inputPropName.value.trim();
+
+        if (propName === "") {
+          showMessage("Please enter a propery name to remove.");
+          return;
+        }
+        if (propName in fruit) {
+          delete fruit[propName];
+          renderTable();
+          showMessage(`Removed: ${propName}`);
+        } else {
+          showMessage("Property not found.");
+        }
+      });
+      btnReset.addEventListener("click", () => {
+        for (const key in fruit) {
+          delete fruit[key];
+        }
+
+        fruit.name = "Apple";
+        fruit.color = "red";
+        renderTable();
+        showMessage("Object has been reset.");
+      });
+      renderTable();
+    </script>
+  </body>
+</html>
