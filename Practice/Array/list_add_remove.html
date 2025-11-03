@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List</title>
+  </head>
+  <body>
+    <h2>Shopping List</h2>
+    <p>Use the buttons to manage your list.</p>
+
+    <input type="text" id="item-input" placeholder="Enter item" />
+    <button id="btn-add-end">Add to End</button>
+    <button id="btn-add-start">Add to Start</button>
+    <button id="btn-remove-end">Remove Last</button>
+    <button id="btn-remove-start">Remove First</button>
+    <p id="list"></p>
+
+    <script>
+      const shoppingList = ["milk", "bread", "apples"];
+      const inputItem = document.getElementById("item-input");
+      const btnAddEnd = document.getElementById("btn-add-end");
+      const btnAddStart = document.getElementById("btn-add-start");
+      const btnRemoveEnd = document.getElementById("btn-remove-end");
+      const btnRemoveStart = document.getElementById("btn-remove-start");
+      const list = document.getElementById("list");
+
+      // Function to update the displayed list
+
+      function updateList() {
+        list.textContent = "List: " + shoppingList.join(", ");
+      }
+
+      // Add to end
+      btnAddEnd.addEventListener("click", () => {
+        const newItem = inputItem.value.trim();
+        if (newItem !== "") {
+          shoppingList.push(newItem);
+          updateList();
+          inputItem.value = "";
+        }
+      });
+
+      // Add to start
+      btnAddStart.addEventListener("click", () => {
+        const newItem = inputItem.value.trim();
+        if (newItem !== "") {
+          shoppingList.unshift(newItem);
+          updateList();
+          inputItem.value = "";
+        }
+      });
+
+      // Remove last item
+      btnRemoveEnd.addEventListener("click", () => {
+        if (shoppingList.length > 0) {
+          shoppingList.pop();
+          updateList();
+        }
+      });
+
+      // Remove first item
+      btnRemoveStart.addEventListener("click", () => {
+        if (shoppingList.length > 0) {
+          shoppingList.shift();
+          updateList();
+        }
+      });
+
+      // Initial Display
+      updateList();
+    </script>
+  </body>
+</html>
