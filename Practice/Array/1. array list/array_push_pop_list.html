@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add and Remove List Items</title>
+  </head>
+  <body>
+    <h2>Add and Remove Items (push/pop</h2>
+
+    <label for="txt-new">Enter new item:</label>
+    <input type="text" name="" id="txt-new" placeholder="Enter item..." />
+    <button id="btn-add">Add to List</button>
+    <button id="btn-remove">Remove Last</button>
+    <p id="result"></p>
+
+    <ul id="item-list"></ul>
+
+    <script>
+      const items = [];
+      const btnAdd = document.getElementById("btn-add");
+      const btnRemove = document.getElementById("btn-remove");
+      const txtNew = document.getElementById("txt-new");
+      const result = document.getElementById("result");
+      const list = document.getElementById("item-list");
+
+      function renderList() {
+        list.innerHTML = "";
+
+        for (const element of items) {
+          const li = document.createElement("li");
+          li.textContent = element;
+          list.appendChild(li);
+        }
+      }
+
+      // Add new item
+      btnAdd.addEventListener("click", () => {
+        const newItem = txtNew.value.trim();
+
+        if (newItem === "") {
+          result.textContent = "Field cannot be empty.";
+          txtNew.focus();
+          return;
+        }
+
+        items.push(newItem);
+        renderList();
+        txtNew.value = "";
+        txtNew.focus();
+      });
+
+      // Remove last item
+      btnRemove.addEventListener("click", () => {
+        if (items.length === 0) {
+          result.textContent = "Field cannot br empty";
+          txtNew.focus();
+          return;
+        }
+        items.pop();
+        renderList();
+      });
+    </script>
+  </body>
+</html>
