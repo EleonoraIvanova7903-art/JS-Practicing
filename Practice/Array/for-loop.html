@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>How the for loop counts</h3>
+
+    <p id="output"></p>
+
+    <script>
+      const box = document.getElementById("output");
+      let text = "";
+
+      // for loop with three parts
+      for (let i = 0; i < 5; i++) {
+        // This line runs each time the loop repeats
+        text += "Now i = " + i + "<br>";
+      }
+
+      box.innerHTML = text;
+    </script>
+  </body>
+</html>

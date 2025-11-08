@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Grocery list (push + length)</h3>
+
+    <input type="text" id="prod-inp" placeholder="Product" />
+    <button id="add-btn">Add</button>
+    <button id="clear-btn">Clear All</button>
+
+    <p id="msg-box"></p>
+    <p id="count-box"></p>
+    <ul id="list-box"></ul>
+
+    <script>
+      const prodInp = document.getElementById("prod-inp");
+      const addBtn = document.getElementById("add-btn");
+      const clearBtn = document.getElementById("clear-btn");
+
+      const msgBox = document.getElementById("msg-box");
+      const countBox = document.getElementById("count-box");
+      const listBox = document.getElementById("list-box");
+
+      const items = [];
+
+      function render() {
+        listBox.innerHTML = " ";
+        for (let i = 0; i < items.length; i++) {
+          const li = document.createElement("li");
+          li.textContent = items[i];
+          listBox.appendChild(li);
+        }
+
+        msgBox.textContent = "Total: " + items.length;
+      }
+
+      function addList() {
+        const name = prodInp.value.trim();
+        if (name === "") {
+          msgBox.textContent = "Pleace enter a product name.";
+          return;
+        }
+
+        msgBox.textContent = "";
+        items.push(name);
+        prodInp.value = "";
+        prodInp.focus();
+        render();
+      }
+      function clearList() {
+        if (items.length === 0) {
+          msgBox.textContent = "The list is already empyt.";
+          return;
+        }
+
+        items.length = 0;
+        listBox.innerHTML = "";
+        countBox.textContent = "Total: 0";
+        msgBox.textContent = "All items were removed.";
+        prodInp.focus();
+      }
+
+      addBtn.addEventListener("click", addList);
+      clearBtn.addEventListener("click", clearList);
+    </script>
+  </body>
+</html>

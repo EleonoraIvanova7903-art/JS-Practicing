@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Unod Last Word (pop)</h3>
+    <input type="text" name="" id="word-inp" />
+    <button id="add-btn">Add</button>
+    <button id="rem-btn">Remove Last</button>
+
+    <p id="msg-box"></p>
+    <p id="info-box"></p>
+    <ul id="list-box"></ul>
+
+    <script>
+      const wordInput = document.getElementById("word-inp");
+      const addBtn = document.getElementById("add-btn");
+      const remBtn = document.getElementById("rem-btn");
+
+      const msgBox = document.getElementById("msg-box");
+      const infoBox = document.getElementById("info-box");
+      const listBox = document.getElementById("list-box");
+
+      const words = [];
+
+      function render() {
+        listBox.innerHTML = "";
+        for (let i = 0; i < words.length; i++) {
+          const li = document.createElement("li");
+          li.textContent = words[i];
+          listBox.appendChild(li);
+        }
+      }
+
+      function addWord() {
+        const word = wordInput.value.trim();
+        if (word === "") {
+          msgBox.textContent = "Pleace enter a word.";
+          wordInput.focus();
+          return;
+        }
+
+        msgBox.textContent = "";
+        words.push(word);
+        wordInput.value = "";
+        wordInput.focus();
+        render();
+      }
+
+      function removeWord() {
+        const removeWord = words.pop();
+        infoBox.textContent = removeWord
+          ? "Removed: " + removeWord
+          : "Nothing to remove.";
+        render();
+      }
+
+      addBtn.addEventListener("click", addWord);
+      remBtn.addEventListener("click", removeWord);
+    </script>
+  </body>
+</html>
