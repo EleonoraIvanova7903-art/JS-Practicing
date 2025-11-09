@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Fruit Search</h3>
+
+    <input type="text" name="" id="fruit-inp" />
+    <button id="search-btn">Search</button>
+
+    <p id="msg-box"></p>
+
+    <script>
+      const fruits = ["apple", "banana", "orange", "apple", "kiwi"];
+
+      const fruitInput = document.getElementById("fruit-inp");
+      const searchBtn = document.getElementById("search-btn");
+      const msgBox = document.getElementById("msg-box");
+
+      function onSearchClic() {
+        const fruit = fruitInput.value.trim().toLowerCase();
+        if (fruit === "") {
+          msgBox.textContent = "Pleace enter a fruit name.";
+          return;
+        }
+
+        if (fruits.includes(fruit)) {
+          const firstPos = fruits.indexOf(fruit);
+          const lastPos = fruits.lastIndexOf(fruit);
+          msgBox.textContent =
+            "Yes, we have " +
+            fruit +
+            ". First position: " +
+            firstPos +
+            ", last position: " +
+            lastPos +
+            ".";
+        } else {
+          msgBox.textContent = "No, " + fruit + "is not in the list.";
+        }
+        fruitInput.value = "";
+        fruitInput.focus();
+      }
+
+      searchBtn.addEventListener("click", onSearchClic);
+    </script>
+  </body>
+</html>
