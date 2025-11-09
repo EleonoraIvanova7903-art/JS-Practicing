@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Live Fruit Search</h3>
+    <input type="text" id="fruit-inp" placeholder="Type to search..." />
+    <p id="msg-box"></p>
+    <ul id="list-box"></ul>
+
+    <script>
+      const fruits = ["apple", "banana", "orange", "apple", "kiwi"];
+      const fruitInput = document.getElementById("fruit-inp");
+      const msgBox = document.getElementById("msg-box");
+      const listBox = document.getElementById("list-box");
+
+      function renderList(highlight) {
+        listBox.innerHTML = "";
+        for (let i = 0; i < fruits.length; i++) {
+          const item = document.createElement("li");
+          item.textContent =
+            fruits[i] === highlight ? fruits[i] + " (found)" : fruits[i];
+          listBox.appendChild(item);
+        }
+      }
+
+      function onLiveInput() {
+        const fruit = fruitInput.value.trim().toLowerCase();
+
+        if (fruit === "") {
+          msgBox.textContent = "";
+          renderList("");
+          return;
+        }
+
+        if (fruits.includes(fruit)) {
+          const firstPos = fruits.indexOf(fruit);
+          const lastPos = fruits.lastIndexOf(fruit);
+          msgBox.textContent =
+            "Yes, we have " +
+            fruit +
+            ". First position: " +
+            firstPos +
+            ", last position: " +
+            lastPos +
+            ".";
+          renderList(fruit);
+        } else {
+          msgBox.textContent = "No, " + fruit + " is not in the list.";
+          renderList("");
+        }
+      }
+
+      renderList("");
+      fruitInput.addEventListener("input", onLiveInput);
+    </script>
+  </body>
+</html>
