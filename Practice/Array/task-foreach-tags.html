@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - forEach: Build Elements From Input</title>
+  </head>
+  <body>
+    <h3>forEach - Build Elements</h3>
+
+    <input
+      type="text"
+      name=""
+      id="el-inp"
+      placeholder="type elements separated by comma..."
+    />
+    <button id="make-btn">Make Elements</button>
+    <p id="msg-box"></p>
+    <div id="el-box"></div>
+
+    <script>
+      // DOM
+
+      const elInp = document.getElementById("el-inp");
+      const makeBtn = document.getElementById("make-btn");
+      const msgBox = document.getElementById("msg-box");
+      const elBox = document.getElementById("el-box");
+
+      // Function
+
+      function makeElements() {
+        const text = elInp.value.trim();
+        elBox.innerHTML = "";
+
+        if (text === "") {
+          msgBox.textContent = "Enter some elements separated by comma.";
+          elInp.focus();
+          return;
+        }
+
+        const items = text.split(",");
+        const clean = [];
+
+        items.forEach(function (raw) {
+          const word = raw.trim();
+          const notEmpty = word !== "";
+          const notRepeat = clean.indexOf(word) === -1;
+
+          if (notEmpty && notRepeat) clean.push(word);
+        });
+
+        clean.forEach(function (word, i) {
+          const p = document.createElement("p");
+          p.textContent = i + 1 + ". " + word;
+          elBox.appendChild(p);
+        });
+        msgBox.textContent = "Created " + clean.length + "element(s).";
+      }
+
+      // Listener
+
+      makeBtn.addEventListener("click", makeElements);
+    </script>
+  </body>
+</html>
