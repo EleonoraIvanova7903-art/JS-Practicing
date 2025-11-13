@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Card ( Object BAsics)</title>
+  </head>
+  <body>
+    <h3>User Card</h3>
+    <div id="info-box"></div>
+    <button id="show-btn">Show</button>
+
+    <script>
+      const user = {
+        name: "Eli",
+        age: 25,
+        country: "Bulgaria",
+        job: "developer",
+      };
+
+      const infoBox = document.getElementById("info-box");
+      const showBtn = document.getElementById("show-btn");
+
+      function showUserInfo() {
+        infoBox.textContent =
+          "Name: " +
+          user.name +
+          ", Age: " +
+          user.age +
+          ", Cuntry: " +
+          user.country +
+          ", Job: " +
+          user.job;
+      }
+      showBtn.addEventListener("click", showUserInfo);
+    </script>
+  </body>
+</html>
