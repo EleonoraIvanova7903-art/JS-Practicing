@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3 - Paladin Add Properties</title>
+  </head>
+  <body>
+    <h3>Task 3 - Paladin Add Properties</h3>
+    <div id="orig-box"></div>
+    <div id="upd-box"></div>
+
+    <script>
+      const paladin = {
+        name: "Ser Althor",
+        level: 5,
+        hp: 160,
+      };
+
+      const origBox = document.getElementById("orig-box");
+      const updBox = document.getElementById("upd-box");
+
+      function showPaladinOriginal() {
+        let infoHtml = "Original paladin: <br>";
+        for (const propName in paladin) {
+          infoHtml += propName + ": " + paladin[propName] + "<br>";
+        }
+        origBox.innerHTML = infoHtml;
+      }
+
+      function updatePaladin() {
+        paladin.title = "Leghtbriner";
+        paladin.shield = "Holy Guard";
+        paladin.mana = 30;
+      }
+
+      function showPaladinUpdate() {
+        let infoHtml = "Updated paladin: <br>";
+        for (const propName in paladin) {
+          infoHtml += propName + ": " + paladin[propName] + "<br>";
+        }
+        updBox.innerHTML = infoHtml;
+      }
+
+      showPaladinOriginal();
+      updatePaladin();
+      showPaladinUpdate();
+    </script>
+  </body>
+</html>
