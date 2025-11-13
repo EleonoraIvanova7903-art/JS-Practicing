@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Property</title>
+  </head>
+  <body>
+    <h3>Update Country</h3>
+    <input
+      type="text"
+      name=""
+      id="country-inp"
+      placeholder="Entry country..."
+    />
+    <button id="update-btn">Update</button>
+    <p id="info-box"></p>
+    <script>
+      const user = { name: "Ely", age: 25, country: "Bulgaria" };
+
+      const countryInp = document.getElementById("country-inp");
+      const updateBtn = document.getElementById("update-btn");
+      const infoBox = document.getElementById("info-box");
+
+      function renderUserInfo() {
+        infoBox.textContent =
+          "Name: " +
+          user.name +
+          ", Age: " +
+          user.age +
+          ", Country: " +
+          user.country;
+      }
+
+      function updateCountry() {
+        const newCountry = countryInp.value.trim();
+        if (newCountry !== "") {
+          user.country = newCountry;
+        }
+        renderUserInfo();
+      }
+
+      renderUserInfo();
+      updateBtn.addEventListener("click", updateCountry);
+    </script>
+  </body>
+</html>
