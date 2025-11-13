@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2 - Druid Selected Fields</title>
+  </head>
+  <body>
+    <h3>Task 2 - Druid Selected Fields</h3>
+    <div id="orig-box"></div>
+    <div id="sel-box"></div>
+
+    <script>
+      const druid = {
+        name: "Lyria",
+        class: "druid",
+        level: 7,
+        sprirtAnimal: "owl",
+        hp: 110,
+      };
+
+      const origBox = document.getElementById("orig-box");
+      const selBox = document.getElementById("sel-box");
+
+      function showDruidOriginal() {
+        let infoHtml = "Original druid:<br><br>";
+        for (const propName in druid) {
+          infoHtml += propName + ": " + druid[propName] + "<br>" + "<hr>";
+        }
+        origBox.innerHTML = infoHtml;
+      }
+
+      function showDruidSelected() {
+        let selHtml = "Selected fields:<br>";
+        selHtml += "class: " + druid.class + "<br>";
+        selHtml += "spirit animal: " + druid.sprirtAnimal + "<br>";
+        selHtml += "hp: " + druid.hp;
+        selBox.innerHTML = selHtml;
+      }
+      showDruidOriginal();
+      showDruidSelected();
+    </script>
+  </body>
+</html>
