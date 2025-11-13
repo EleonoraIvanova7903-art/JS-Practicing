@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1 - Warrior Object</title>
+  </head>
+  <body>
+    <h3>Task 1 - Warriour Object</h3>
+    <div id="orig-box"></div>
+
+    <script>
+      const warrior = {
+        name: "Tharot",
+        race: "orc",
+        level: 3,
+        hp: 140,
+        weapon: "battle axe ",
+      };
+
+      const origBox = document.getElementById("orig-box");
+
+      function showWarriour() {
+        let infoHtml = "Warrior properties:<br>";
+        for (const propName in warrior) {
+          infoHtml += propName + ": " + warrior[propName] + "<br>";
+        }
+        origBox.innerHTML = infoHtml;
+      }
+
+      showWarriour();
+    </script>
+  </body>
+</html>
