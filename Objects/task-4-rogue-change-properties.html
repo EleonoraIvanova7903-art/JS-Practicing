@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4 - Rogue Change Property</title>
+  </head>
+  <body>
+    <h3>Task 4 - Rogue Change Property</h3>
+    <div id="orig-box"></div>
+    <div id="upd-box"></div>
+
+    <script>
+      const rogue = {
+        name: "Shade",
+        level: 2,
+        hp: 90,
+        weapon: "dagger",
+      };
+
+      const orgBox = document.getElementById("orig-box");
+      const updBox = document.getElementById("upd-box");
+
+      function showOriginal() {
+        let infoHtml = "Original rogue:<br>";
+        for (const propName in rogue) {
+          infoHtml += propName + ": " + rogue[propName] + "<br>";
+        }
+        orgBox.innerHTML = infoHtml + "<hr>";
+      }
+
+      function updateRogue() {
+        rogue.level = 4;
+        rogue.hp = 105;
+        rogue.weapon = "shadow blade";
+      }
+
+      function showUpdated() {
+        let infoHtml = "Update Rogue:<br>";
+        for (const propName in rogue) {
+          infoHtml += propName + ": " + rogue[propName] + "<br>";
+        }
+        updBox.innerHTML = infoHtml + "<hr>";
+      }
+
+      showOriginal();
+      updateRogue();
+      showUpdated();
+    </script>
+  </body>
+</html>
