@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5 - Beast Delete Proporty</title>
+  </head>
+  <body>
+    <h3>Task 5 - Beast Delete Proporty</h3>
+    <p>Type property name to delete (example: rage):</p>
+    <input type="text" name="" id="del-inp" />
+    <button id="del-btn">Delete</button>
+
+    <h4>Original Beast</h4>
+    <div id="orig-box"></div>
+
+    <h4>Updated Beast</h4>
+    <div id="upd-box"></div>
+
+    <script>
+      const beast = {
+        name: "Ironclaw",
+        type: "bear",
+        level: 6,
+        territory: "Northern Forest",
+        rage: 40,
+      };
+
+      const delInput = document.getElementById("del-inp");
+      const delBtn = document.getElementById("del-btn");
+      const origBox = document.getElementById("orig-box");
+      const updBox = document.getElementById("upd-box");
+
+      function showOriginal() {
+        let html = "Original beast properties:<br>";
+        for (const propName in beast) {
+          html += propName + ": " + beast[propName] + "<br>";
+        }
+
+        origBox.innerHTML = html + "<br>";
+      }
+
+      function showUpdated() {
+        let html = "Current beast properties:<br> ";
+        for (const propName in beast) {
+          html += propName + ": " + beast[propName] + "<br>";
+        }
+        updBox.innerHTML = html + "<hr>";
+      }
+
+      function deletedClick() {
+        const keyDel = delInput.value;
+        if (keyDel) {
+          delete beast[keyDel];
+          showUpdated();
+        }
+      }
+
+      delBtn.addEventListener("click", deletedClick);
+
+      showOriginal();
+      showUpdated();
+    </script>
+  </body>
+</html>
