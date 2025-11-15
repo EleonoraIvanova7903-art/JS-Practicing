@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task 7 – Dragon Loop Properties</title>
+  </head>
+  <body>
+    <h3>Task 7 – Dragon Loop Properties</h3>
+
+    <button id="show-btn">Show Dragon Info</button>
+
+    <div id="dragon-box"></div>
+
+    <script>
+      const dragon = {
+        name: "Kryzath",
+        element: "frost",
+        age: 230,
+        hp: 500,
+        wingspan: 18,
+      };
+
+      const showBtn = document.getElementById("show-btn");
+      const dragonBox = document.getElementById("dragon-box");
+
+      function showDragonInfo() {
+        let html = "Dragon properties:<br>";
+        for (const propName in dragon) {
+          html += propName + ": " + dragon[propName] + "<br>";
+        }
+        dragonBox.innerHTML = html;
+      }
+
+      showBtn.addEventListener("click", showDragonInfo);
+    </script>
+  </body>
+</html>
