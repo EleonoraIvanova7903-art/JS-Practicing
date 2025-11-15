@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task 6 – Necromancer Check Properties</title>
+  </head>
+  <body>
+    <h3>Task 6 – Necromancer Check Properties</h3>
+
+    <p>Type a property name to check (example: mana, pet, artifact):</p>
+    <input id="prop-inp" type="text" />
+    <button id="check-btn">Check</button>
+
+    <h4>Necromancer Object</h4>
+    <div id="obj-box"></div>
+
+    <h4>Result</h4>
+    <div id="res-box"></div>
+
+    <script>
+      const necrom = {
+        name: "Valmor",
+        level: 10,
+        mana: 220,
+        artifact: "Bone Scepter",
+      };
+
+      const propInput = document.getElementById("prop-inp");
+      const checkBtn = document.getElementById("check-btn");
+      const objectBox = document.getElementById("obj-box");
+      const resultBox = document.getElementById("res-box");
+
+      function showObject() {
+        let html = "Necromancer properties:<br>";
+        for (const propName in necrom) {
+          html += propName + ": " + necrom[propName] + "<br>";
+        }
+        objectBox.innerHTML = html;
+      }
+
+      function CheckClick() {
+        const propName = propInput.value;
+        if (!propName) {
+          resultBox.textContent = "Please type a property name.";
+          return;
+        }
+        const exists = propName in necrom;
+        resultBox.textContent = "Exists: " + exists;
+      }
+
+      checkBtn.addEventListener("click", CheckClick);
+
+      showObject();
+    </script>
+  </body>
+</html>
