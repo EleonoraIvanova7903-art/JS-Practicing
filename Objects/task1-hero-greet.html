@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - Hero Greet and List</title>
+  </head>
+  <body>
+    <h3>Here Info</h3>
+    <button id="show-btn">Show Hero</button>
+
+    <div id="line-box"></div>
+    <div id="list-box"></div>
+
+    <script>
+      const hero = {
+        name: "Althor",
+        level: 5,
+        greetLine: function () {
+          return (
+            "My name is " + this.name + " and I am Level" + this.level + "."
+          );
+        },
+        greetList: function () {
+          let html = "<ul>";
+          html += "<li>Name: " + this.name + "</li>";
+          html += "<li>level: " + this.level + "</li>";
+          html += "</ul>";
+          return html;
+        },
+      };
+
+      const showBtn = document.getElementById("show-btn");
+      const lineBox = document.getElementById("line-box");
+      const listBox = document.getElementById("list-box");
+
+      function showHero() {
+        lineBox.textContent = hero.greetLine();
+        listBox.innerHTML = hero.greetList();
+      }
+
+      showBtn.addEventListener("click", showHero);
+    </script>
+  </body>
+</html>
