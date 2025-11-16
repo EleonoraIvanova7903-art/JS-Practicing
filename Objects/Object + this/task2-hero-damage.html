@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - Hero Damage</title>
+  </head>
+  <body>
+    <h3>Hero Total Damage</h3>
+    <button id="calc-btn">Calculate Damage</button>
+    <div id="msg-box"></div>
+
+    <script>
+      const hero = {
+        name: "Althor",
+        damage: 20,
+        strength: 3,
+        totalDamage: function () {
+          return this.damage * this.strength;
+        },
+      };
+
+      const calcBtn = document.getElementById("calc-btn");
+      const msgBox = document.getElementById("msg-box");
+
+      function showDamage() {
+        let html = "";
+        html += "name: " + hero.name + "<br>";
+        html += "damage: " + hero.damage + "<br>";
+        html += "strength: " + hero.strength + "<br>";
+        html += "total damage: " + hero.totalDamage();
+
+        msgBox.innerHTML = html;
+      }
+
+      calcBtn.addEventListener("click", showDamage);
+    </script>
+  </body>
+</html>
