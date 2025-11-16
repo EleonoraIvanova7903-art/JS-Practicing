@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Full Information</title>
+  </head>
+  <body>
+    <h3>Hero Full Information</h3>
+    <button id="show-btn">Show Full Information</button>
+    <div id="inf-box"></div>
+
+    <script>
+      const hero = {
+        name: "Althor",
+        heroClass: "Palading",
+        strength: 18,
+        hp: 160,
+        fullInfo: function () {
+          let text = "";
+          text += "Name: " + this.name + "<br>";
+          text += "Class: " + this.heroClass + "<br>";
+          text += "Strength: " + this.strength + "<br>";
+          text += "Hp: " + this.hp + "<br>";
+          return text;
+        },
+      };
+      const showBtn = document.getElementById("show-btn");
+      const infoBox = document.getElementById("inf-box");
+
+      function showInfo() {
+        const text = hero.fullInfo();
+        infoBox.innerHTML = text;
+      }
+
+      showBtn.addEventListener("click", showInfo);
+    </script>
+  </body>
+</html>
