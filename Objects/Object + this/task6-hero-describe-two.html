@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - Hero Describe Two</title>
+  </head>
+  <body>
+    <h3>Two Heroes Description</h3>
+    <button id="hero-a-btn">Show Hero A</button>
+    <button id="hero-b-btn">Show Hero B</button>
+    <div id="out-box"></div>
+
+    <script>
+      function describeHero() {
+        let text = "";
+        text += "Name: " + this.name + "<br>";
+        text += "Level: " + this.level + "<br>";
+        return text;
+      }
+
+      const heroA = {
+        name: "Althor",
+        level: 5,
+        describe: describeHero,
+      };
+
+      const heroB = {
+        name: "Mira",
+        level: 7,
+        describe: describeHero,
+      };
+
+      const heroAbtn = document.getElementById("hero-a-btn");
+      const heroBbtn = document.getElementById("hero-b-btn");
+      const outBox = document.getElementById("out-box");
+
+      function showHeroA() {
+        const text = heroA.describe();
+        outBox.innerHTML = text;
+      }
+
+      function showHeroB() {
+        const text = heroB.describe();
+        outBox.innerHTML = text;
+      }
+
+      heroAbtn.addEventListener("click", showHeroA);
+      heroBbtn.addEventListener("click", showHeroB);
+    </script>
+  </body>
+</html>
