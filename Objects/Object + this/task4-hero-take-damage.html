@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - Hero Take Damage</title>
+  </head>
+  <body>
+    <h3>Hero HP After Damage</h3>
+    <input type="number" name="" id="dmg-inp" />
+    <button id="hit-btn">Hit Hero</button>
+    <p id="info-box"></p>
+    <p id="hp-box"></p>
+
+    <script>
+      const hero = {
+        name: "Althor",
+        hp: 160,
+        infoHero: function () {
+          let text = "";
+          text += "Name: " + this.name + "<br>";
+          text += "HP: " + this.hp + "<br>";
+          return text;
+        },
+        takeDamage: function (amount) {
+          this.hp = this.hp - amount;
+        },
+      };
+
+      // DOM
+
+      const dmgInp = document.getElementById("dmg-inp");
+      const hitBtn = document.getElementById("hit-btn");
+      const hpBox = document.getElementById("hp-box");
+      const infoBox = document.getElementById("info-box");
+
+      function showHero() {
+        const text = hero.infoHero();
+        infoBox.innerHTML = text;
+      }
+      function updateHpText() {
+        hpBox.textContent = "Current HP: " + hero.hp + ".";
+      }
+
+      function hitHero() {
+        const damage = Number(dmgInp.value);
+        hero.takeDamage(damage);
+        updateHpText();
+      }
+
+      hitBtn.addEventListener("click", hitHero);
+      showHero();
+      updateHpText();
+    </script>
+  </body>
+</html>
