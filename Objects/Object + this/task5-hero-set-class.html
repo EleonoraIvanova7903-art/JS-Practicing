@@ -10,20 +10,33 @@
     <input type="text" name="" id="class-inp" />
     <button id="set-btn">Set Class</button>
     <div id="msg-box"></div>
+    <div id="info-box"></div>
 
     <script>
       const hero = {
         name: "Althor",
         heroClass: "Unknown",
+        infoHero: function () {
+          let text = "";
+          text += "Name: " + this.name + "<br>";
+          text += "Class: " + this.heroClass + "<br>";
+          return text;
+        },
         setClass: function (className) {
           this.heroClass = className;
-          return "Hero " + this.name + " is noe class " + this.heroClass + ".";
+          return "Hero " + this.name + " is now class " + this.heroClass + ".";
         },
       };
 
       const classInp = document.getElementById("class-inp");
       const setBtn = document.getElementById("set-btn");
       const msgBox = document.getElementById("msg-box");
+      const infoBox = document.getElementById("info-box");
+
+      function infoHero() {
+        const text = hero.infoHero();
+        infoBox.innerHTML = text;
+      }
 
       function setHeroClass() {
         const className = classInp.value.trim();
@@ -34,10 +47,12 @@
 
         const text = hero.setClass(className);
         msgBox.textContent = text;
+        infoBox.innerHTML = hero.infoHero();
         classInp.value = "";
         classInp.focus();
       }
 
+      infoHero();
       setBtn.addEventListener("click", setHeroClass);
     </script>
   </body>
