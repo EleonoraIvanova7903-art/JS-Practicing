@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task – Hero Clone List</title>
+  </head>
+  <body>
+    <h3>Hero Clones List</h3>
+
+    <div id="orig-box"></div>
+
+    <input id="name-inp" type="text" placeholder="enter clone name..." />
+    <button id="clone-btn">Clone Hero</button>
+
+    <div id="list-box"></div>
+
+    <script>
+      // Object
+      const hero = {
+        name: "Althor",
+        level: 5,
+        clone: function (newName) {
+          const newHero = {
+            name: newName,
+            level: this.level,
+          };
+          return newHero;
+        },
+        describe: function () {
+          let text = "";
+          text += "Name: " + this.name + "<br>";
+          text += "Level: " + this.level + "<br>";
+          return text;
+        },
+      };
+
+      // Data
+      const clones = [];
+
+      // DOM
+      const origBox = document.getElementById("orig-box");
+      const nameInp = document.getElementById("name-inp");
+      const cloneBtn = document.getElementById("clone-btn");
+      const listBox = document.getElementById("list-box");
+
+      // Functions
+      function renderOriginal() {
+        origBox.innerHTML = hero.describe();
+      }
+
+      function renderClones() {
+        if (clones.length === 0) {
+          listBox.textContent = "No clones yet.";
+          return;
+        }
+
+        let html = "Clones:<br>";
+
+        for (let index = 0; index < clones.length; index++) {
+          const cloneHero = clones[index];
+          html +=
+            index +
+            1 +
+            ". " +
+            cloneHero.name +
+            " (level " +
+            cloneHero.level +
+            ")<br>";
+        }
+
+        listBox.innerHTML = html;
+      }
+
+      function handleClone() {
+        const newName = nameInp.value.trim();
+
+        if (newName === "") {
+          listBox.textContent = "Please enter a name for the clone.";
+          return;
+        }
+
+        const newHero = hero.clone(newName);
+        clones.push(newHero);
+
+        nameInp.value = "";
+        nameInp.focus();
+        renderClones();
+      }
+
+      // Listener
+      cloneBtn.addEventListener("click", handleClone);
+
+      // Initial render
+      renderOriginal();
+      renderClones();
+    </script>
+  </body>
+</html>
