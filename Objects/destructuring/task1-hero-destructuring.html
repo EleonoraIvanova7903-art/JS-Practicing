@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Hero Info</h3>
+    <button id="show-btn">Show Hero Info</button>
+    <div id="msg-box"></div>
+
+    <script>
+      const hero = {
+        name: "Tharok",
+        level: 3,
+        classType: "warrior",
+      };
+
+      const showBtn = document.getElementById("show-btn");
+      const msgBox = document.getElementById("msg-box");
+
+      function getHeroInfo({ name, level, classType }) {
+        const text =
+          "Hero " + name + " is level " + level + " " + classType + ".";
+        return text;
+      }
+
+      function showClick() {
+        const infoText = getHeroInfo(hero);
+        msgBox.innerHTML = infoText;
+      }
+
+      showBtn.addEventListener("click", showClick);
+    </script>
+  </body>
+</html>
