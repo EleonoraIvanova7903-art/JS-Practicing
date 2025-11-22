@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - Product Shopping List</title>
+  </head>
+  <body>
+    <h3>Product Shopping List</h3>
+
+    <input type="text" name="" id="name-inp" placeholder="Product name..." />
+    <input type="number" name="" id="count-inp" placeholder="count..." />
+
+    <button id="add-btn">Add</button>
+    <div id="error-box"></div>
+    <div id="list-box"></div>
+
+    <script>
+      class Product {
+        constructor(name, count) {
+          this.name = name;
+          this.count = count;
+        }
+        getLine() {
+          return this.name + " - " + this.count + " pcs.";
+        }
+      }
+
+      const nameInp = document.getElementById("name-inp");
+      const countInp = document.getElementById("count-inp");
+      const addBtn = document.getElementById("add-btn");
+      const errorBox = document.getElementById("error-box");
+      const listBox = document.getElementById("list-box");
+
+      const productList = [];
+
+      function createProduct(nameValue, countValue) {
+        return new Product(nameValue, countValue);
+      }
+
+      function renderList() {
+        let html = "";
+        html += "<ul>";
+        for (let index = 0; index < productList.length; index++) {
+          html += "<li>" + productList[index].getLine() + "</li>";
+        }
+        html += "</ul>";
+        listBox.innerHTML = html;
+      }
+
+      function handleAdd() {
+        const nameValue = nameInp.value;
+        const countValue = Number(countInp.value);
+
+        if (!nameValue || countValue <= 0) {
+          errorBox.innerHTML = "Please enter a valid product name and count.";
+          return;
+        }
+
+        errorBox.innerHTML = "";
+
+        const productObj = createProduct(nameValue, countValue);
+        productList.push(productObj);
+        renderList();
+
+        nameInp.value = "";
+        countInp.value = "";
+        nameInp.focus();
+      }
+
+      addBtn.addEventListener("click", handleAdd);
+    </script>
+  </body>
+</html>
