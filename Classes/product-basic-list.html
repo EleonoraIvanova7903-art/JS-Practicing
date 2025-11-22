@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Basic List</title>
+  </head>
+  <body>
+    <h3>Product Basic List</h3>
+    <input type="text" name="" id="name-inp" placeholder="Product name..." />
+    <input type="number" name="" id="price-inp" placeholder="price..." />
+    <button id="add-btn">Add</button>
+
+    <div id="error-box"></div>
+    <div id="list-box"></div>
+
+    <script>
+      class Product {
+        constructor(name, price) {
+          this.name = name;
+          this.price = price;
+        }
+        getLine() {
+          return this.name + " - " + this.price;
+        }
+      }
+
+      const nameInp = document.getElementById("name-inp");
+      const priceInp = document.getElementById("price-inp");
+      const addBtn = document.getElementById("add-btn");
+      const errorBox = document.getElementById("error-box");
+      const listBox = document.getElementById("list-box");
+
+      const productList = [];
+
+      function createProduct(nameValue, priceValue) {
+        return new Product(nameValue, priceValue);
+      }
+
+      function renderList() {
+        let html = "";
+        html += "<ul>";
+        for (let index = 0; index < productList.length; index++) {
+          html += "<li>" + productList[index].getLine() + "</li>";
+        }
+
+        html += "</ul>";
+        listBox.innerHTML = html;
+      }
+
+      function handleAdd() {
+        const nameValue = nameInp.value;
+        const priceValue = Number(priceInp.value);
+
+        if (!nameValue || priceValue <= 0) {
+          errorBox.innerHTML = "Please enter a valid product name and price.";
+          return;
+        }
+
+        errorBox.innerHTML = "";
+        const productObj = createProduct(nameValue, priceValue);
+        productList.push(productObj);
+        renderList();
+
+        nameInp.value = "";
+        priceInp.value = "";
+        nameInp.focus();
+      }
+
+      addBtn.addEventListener("click", handleAdd);
+    </script>
+  </body>
+</html>
