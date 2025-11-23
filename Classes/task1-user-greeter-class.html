@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1 - User Greeter With Class</title>
+  </head>
+  <body>
+    <h3>User Greeter</h3>
+    <input type="text" name="" id="name-inp" placeholder="enter your name..." />
+    <button id="greet-btn">Greet</button>
+    <div id="result-box"></div>
+
+    <script>
+      const nameInp = document.getElementById("name-inp");
+      const greetBtn = document.getElementById("greet-btn");
+      const resultBox = document.getElementById("result-box");
+
+      class User {
+        constructor(name) {
+          this.name = name;
+        }
+        getGreeting() {
+          return "Hello " + this.name + "!";
+        }
+      }
+
+      function createUser(userName) {
+        const user = new User(userName);
+        return user;
+      }
+
+      function onGreetClick() {
+        const nameValue = nameInp.value;
+        const user = createUser(nameValue);
+        const text = user.getGreeting();
+        resultBox.innerHTML = text;
+
+        nameInp.value = "";
+        nameInp.focus();
+      }
+
+      greetBtn.addEventListener("click", onGreetClick);
+    </script>
+  </body>
+</html>
