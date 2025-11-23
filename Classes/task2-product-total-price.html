@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2 - Product Total Price With Class</title>
+  </head>
+  <body>
+    <h3>Product Total Price</h3>
+    <input
+      type="text"
+      name=" "
+      id="product-name-inp"
+      placeholder="product name..."
+    />
+    <input
+      type="number"
+      name=""
+      id="price-inp"
+      placeholder="price per item..."
+    />
+    <input type="number" name="" id="count-inp" placeholder="count..." />
+
+    <button id="calc-btn">Calculate</button>
+    <div id="result-box"></div>
+
+    <script>
+      const productNameInp = document.getElementById("product-name-inp");
+      const priceInp = document.getElementById("price-inp");
+      const countInp = document.getElementById("count-inp");
+      const resultBox = document.getElementById("result-box");
+      const calcBtn = document.getElementById("calc-btn");
+
+      class Product {
+        constructor(name, price) {
+          this.name = name;
+          this.price = price;
+        }
+
+        getTotalPrice(count) {
+          return this.price * count;
+        }
+      }
+
+      function createProduct(nameValue, priceValue) {
+        const product = new Product(nameValue, priceValue);
+        return product;
+      }
+
+      function onCalcClic() {
+        const nameValue = productNameInp.value;
+        const priceValue = Number(priceInp.value);
+        const countValue = Number(countInp.value);
+
+        const product = createProduct(nameValue, priceValue);
+        const total = product.getTotalPrice(countValue);
+
+        const text = "Product " + product.name + " - Total: " + total;
+        resultBox.innerHTML = text;
+
+        productNameInp.value = "";
+        priceInp.value = "";
+        countInp.value = "";
+        productNameInp.focus();
+      }
+
+      calcBtn.addEventListener("click", onCalcClic);
+    </script>
+  </body>
+</html>
