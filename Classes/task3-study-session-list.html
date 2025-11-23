@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3 - Study session List With Class</title>
+  </head>
+  <body>
+    <h3>Study Session List</h3>
+    <input type="text" name="" id="topic-inp" placeholder="topic..." />
+    <input type="number" name="" id="minutes-inp" placeholder="minutes..." />
+    <button id="add-btn">Add</button>
+    <div id="list-box"></div>
+
+    <script>
+      const topicInp = document.getElementById("topic-inp");
+      const minutesInp = document.getElementById("minutes-inp");
+      const addBtn = document.getElementById("add-btn");
+      const listBox = document.getElementById("list-box");
+
+      class StudySession {
+        constructor(topic, minutes) {
+          this.topic = topic;
+          this.minutes = minutes;
+        }
+
+        getLine() {
+          return this.topic + " - " + this.minutes + " min";
+        }
+      }
+
+      const sessionList = [];
+
+      function creatSession(topicValue, minutesValue) {
+        const session = new StudySession(topicValue, minutesValue);
+        return session;
+      }
+
+      function getAllLines(list) {
+        let html = "";
+        for (let i = 0; i < list.length; i++) {
+          html = html + "<div>" + list[i].getLine() + "</div>";
+        }
+        return html;
+      }
+
+      function onAddClick() {
+        const topicValue = topicInp.value;
+        const minutesValue = Number(minutesInp.value);
+        const session = creatSession(topicValue, minutesValue);
+        sessionList.push(session);
+
+        const html = getAllLines(sessionList);
+        listBox.innerHTML = html;
+
+        topicInp.value = "";
+        minutesInp.value = "";
+        topicInp.focus();
+      }
+
+      addBtn.addEventListener("click", onAddClick);
+    </script>
+  </body>
+</html>
