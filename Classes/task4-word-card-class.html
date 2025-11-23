@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4 - Word Card With Class</title>
+  </head>
+  <body>
+    <h2>Word Card</h2>
+    <input type="text" name="" id="eng-inp" placeholder="english word..." />
+    <input type="text" name="" id="bg-inp" placeholder="translation..." />
+    <input
+      type="text"
+      name=""
+      id="example-inp"
+      placeholder="example sentence..."
+    />
+    <button id="add-btn">Add Card</button>
+    <div id="card-box"></div>
+
+    <script>
+      const engInp = document.getElementById("eng-inp");
+      const bgInp = document.getElementById("bg-inp");
+      const exampleInp = document.getElementById("example-inp");
+      const addBtn = document.getElementById("add-btn");
+      const cardBox = document.getElementById("card-box");
+
+      class WordCard {
+        constructor(english, translation, example) {
+          this.english = english;
+          this.translation = translation;
+          this.example = example;
+        }
+
+        getCardHtml() {
+          let html = "";
+          html += "<h4>" + this.english + "</h4>";
+          html += "<div>Translation: " + this.translation + "</div>";
+          html += "<div>Example: " + this.example + "</div>";
+          return html;
+        }
+      }
+
+      function createCard(engValue, bgValue, exampleValue) {
+        const card = new WordCard(engValue, bgValue, exampleValue);
+        return card;
+      }
+
+      function onAddClick() {
+        const engValue = engInp.value;
+        const bgValue = bgInp.value;
+        const exampleValue = exampleInp.value;
+
+        const card = createCard(engValue, bgValue, exampleValue);
+        const html = card.getCardHtml();
+        cardBox.innerHTML = html;
+
+        engInp.value = "";
+        bgInp.value = "";
+        exampleInp.value = "";
+        engInp.focus();
+      }
+
+      addBtn.addEventListener("click", onAddClick);
+    </script>
+  </body>
+</html>
