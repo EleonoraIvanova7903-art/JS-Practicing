@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Grdes Display</title>
+  </head>
+  <body>
+    <h3>Student Grades Display</h3>
+    <button id="show-btn">Show students</button>
+    <div id="result"></div>
+
+    <script>
+      const students = [
+        { name: "Maria", grade: 5.5 },
+        { name: "Ivan", grade: 4.2 },
+        { name: "Elena", grade: 6.0 },
+        { name: "Stoyan", grade: 3.8 },
+        { name: "Petar", grade: 5.0 },
+        { name: "Kalina", grade: 4.9 },
+      ];
+
+      function renderStudents(list) {
+        let html = "<table><tr><th>Name</th><th>Grade</th></tr>";
+        list.forEach((s) => {
+          html += "<tr><td>" + s.name + "</td><td>" + s.grade + "</td></tr>";
+        });
+        html += "</table>";
+        document.querySelector("#result").innerHTML = html;
+      }
+
+      function handleShow() {
+        renderStudents(students);
+      }
+
+      document.querySelector("#show-btn").addEventListener("click", handleShow);
+    </script>
+  </body>
+</html>
