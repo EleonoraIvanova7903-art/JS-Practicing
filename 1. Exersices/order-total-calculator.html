@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Total Calculator</title>
+  </head>
+  <body>
+    <h3>Order Total Calculator</h3>
+    <button id="calc-btn">Calculate total</button>
+    <div id="result"></div>
+
+    <script>
+      class OrderItem {
+        constructor(name, price, quantity) {
+          this.name = name;
+          this.price = price;
+          this.quantity = quantity;
+        }
+      }
+
+      const orders = [
+        new OrderItem("Apples", 2.0, 3),
+        new OrderItem("Pasta", 1.4, 2),
+        new OrderItem("Juice", 1.9, 1),
+        new OrderItem("Chicken", 5.5, 2),
+      ];
+
+      function calculateTotal(list) {
+        let total = 0;
+        for (const item of list) {
+          total += item.price * item.quantity;
+        }
+        document.querySelector("#result").innerHTML =
+          "Total: " + total.toFixed(2);
+      }
+
+      function handleCalc() {
+        calculateTotal(orders);
+      }
+
+      document.querySelector("#calc-btn").addEventListener("click", handleCalc);
+    </script>
+  </body>
+</html>
