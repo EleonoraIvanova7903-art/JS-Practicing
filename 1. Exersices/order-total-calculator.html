@@ -7,26 +7,18 @@
   </head>
   <body>
     <h3>Order Total Calculator</h3>
-    <button id="calc-btn">Calculate total</button>
+    <button id="calc-btn">Calculate Total</button>
     <div id="result"></div>
 
     <script>
-      class OrderItem {
-        constructor(name, price, quantity) {
-          this.name = name;
-          this.price = price;
-          this.quantity = quantity;
-        }
-      }
-
       const orders = [
-        new OrderItem("Apples", 2.0, 3),
-        new OrderItem("Pasta", 1.4, 2),
-        new OrderItem("Juice", 1.9, 1),
-        new OrderItem("Chicken", 5.5, 2),
+        { name: "Apples", price: 2.0, quantity: 3 },
+        { name: "Pasta", price: 1.4, quantity: 2 },
+        { name: "Juice", price: 1.9, quantity: 1 },
+        { name: "Chicken", price: 5.5, quantity: 2 },
       ];
 
-      function calculateTotal(list) {
+      function caluclateTotal(list) {
         let total = 0;
         for (const item of list) {
           total += item.price * item.quantity;
@@ -36,7 +28,7 @@
       }
 
       function handleCalc() {
-        calculateTotal(orders);
+        caluclateTotal(orders);
       }
 
       document.querySelector("#calc-btn").addEventListener("click", handleCalc);
