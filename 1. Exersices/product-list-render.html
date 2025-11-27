@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product List Render</title>
+  </head>
+  <body>
+    <h3>Product List Render</h3>
+    <button id="show-btn">Show</button>
+    <div id="result"></div>
+
+    <script>
+      class Product {
+        constructor(name, price) {
+          this.name = name;
+          this.price = price;
+        }
+      }
+
+      const products = [
+        new Product("Bread", 1.2),
+        new Product("Milk", 0.99),
+        new Product("Eggs", 2.5),
+        new Product("Rice", 1.1),
+        new Product("Cheese", 3.4),
+      ];
+
+      function renderProducts(list) {
+        let html = "<ul>";
+        for (let i = 0; i < list.length; i++) {
+          html += "<li>" + list[i].name + " - " + list[i].price + "</li>";
+        }
+
+        html += "</ul>";
+        document.querySelector("#result").innerHTML = html;
+      }
+
+      function handleShow() {
+        renderProducts(products);
+      }
+
+      document.querySelector("#show-btn").addEventListener("click", handleShow);
+    </script>
+  </body>
+</html>
