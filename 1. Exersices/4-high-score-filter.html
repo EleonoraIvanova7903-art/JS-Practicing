@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High Score Filter</title>
+  </head>
+  <body>
+    <h1>High Score Filter</h1>
+    <input type="number" id="min-score" placeholder="Minimum score" />
+    <button id="filter-btn">Filter</button>
+    <div id="result"></div>
+
+    <script>
+      const players = [
+        { name: "Alex", score: 120 },
+        { name: "Boris", score: 90 },
+        { name: "Reni", score: 140 },
+        { name: "Miro", score: 60 },
+        { name: "Stan", score: 200 },
+        { name: "Eva", score: 130 },
+        { name: "Lora", score: 50 },
+        { name: "Toni", score: 170 },
+      ];
+
+      function filterPlayers(minScore) {
+        let html = "<ul>";
+        for (const p of players) {
+          if (p.score >= minScore) {
+            html += "<li>" + p.name + " - " + p.score + "</li>";
+          }
+        }
+        html += "</ul>";
+        document.querySelector("#result").innerHTML = html;
+      }
+
+      function handleFilter() {
+        const value = Number(document.querySelector("#min-score").value);
+        filterPlayers(value);
+      }
+
+      document
+        .querySelector("#filter-btn")
+        .addEventListener("click", handleFilter);
+    </script>
+  </body>
+</html>
