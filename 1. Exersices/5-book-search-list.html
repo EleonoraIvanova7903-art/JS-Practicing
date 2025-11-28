@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Search Lis</title>
+  </head>
+  <body>
+    <h1>Book Search List</h1>
+    <input type="text" id="search" placeholder="Search title..." />
+    <button id="search-btn">Search</button>
+    <div id="result"></div>
+
+    <script>
+      const books = [
+        { title: "The Silent Forest", author: "Mark Neil" },
+        { title: "Ocean Heart", author: "Anna Cole" },
+        { title: "Midnight Star", author: "Joel Carter" },
+        { title: "The Last Kingdom", author: "Nora Hill" },
+        { title: "Falling Skies", author: "Denis Clark" },
+        { title: "River of Time", author: "Emma Jones" },
+        { title: "Broken Wings", author: "Sarah Dale" },
+        { title: "Deep Roots", author: "Tom Carter" },
+        { title: "City Shadows", author: "Mia Grant" },
+        { title: "Beyond the Horizon", author: "Laura Stone" },
+      ];
+      function searchBooks(text) {
+        let html = "<ul>";
+        books.forEach((b) => {
+          if (b.title.toLowerCase().includes(text.toLowerCase())) {
+            html += "<li>" + b.title + " - " + b.author + "</li>";
+          }
+        });
+
+        html += "</ul>";
+        document.querySelector("#result").innerHTML = html;
+      }
+
+      function handleSearch() {
+        const text = document.querySelector("#search").value;
+        searchBooks(text);
+      }
+
+      document
+        .querySelector("#search-btn")
+        .addEventListener("click", handleSearch);
+    </script>
+  </body>
+</html>
