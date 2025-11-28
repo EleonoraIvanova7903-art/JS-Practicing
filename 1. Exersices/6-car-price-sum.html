@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Price Sum</title>
+  </head>
+  <body>
+    <h1>Car Price Sum</h1>
+    <button id="show-btn">Show total price</button>
+    <div id="result"></div>
+
+    <script>
+      const cars = [
+        { name: "Toyota", price: 12000 },
+        { name: "Honda", price: 13500 },
+        { name: "Ford", price: 9800 },
+        { name: "BMW", price: 22000 },
+        { name: "Audi", price: 21000 },
+      ];
+
+      function calculateTotalPrice(list) {
+        let total = 0;
+        for (let i = 0; i < list.length; i++) {
+          total += list[i].price;
+        }
+
+        document.querySelector("#result").innerHTML = "Total price: " + total;
+      }
+
+      function handleShowTotal() {
+        calculateTotalPrice(cars);
+      }
+
+      document
+        .querySelector("#show-btn")
+        .addEventListener("click", handleShowTotal);
+    </script>
+  </body>
+</html>
