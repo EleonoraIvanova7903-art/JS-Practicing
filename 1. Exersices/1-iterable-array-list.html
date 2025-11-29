@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iterable Array List</title>
+  </head>
+  <body>
+    <h1>Iterable Array List</h1>
+
+    <button id="show-btn">Show items</button>
+    <div id="res"></div>
+
+    <script>
+      const items = ["Bread", "Apple", "Milk", "Cheese", "Coffee"];
+      function buildListText(list) {
+        let text = "";
+        for (const item of list) {
+          text += item + "<br>";
+        }
+        return text;
+      }
+
+      function handleShow() {
+        const result = buildListText(items);
+        document.querySelector("#res").innerHTML = result;
+      }
+
+      document.querySelector("#show-btn").addEventListener("click", handleShow);
+    </script>
+  </body>
+</html>
