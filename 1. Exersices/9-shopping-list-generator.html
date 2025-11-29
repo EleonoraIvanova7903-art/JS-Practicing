@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List Generator</title>
+  </head>
+  <body>
+    <h1>Shopping List Generator</h1>
+    <button id="generate-btn">Generate list</button>
+    <div id="result"></div>
+
+    <script>
+      const foods = [
+        { name: "Bread", price: 1.2, category: "Food" },
+        { name: "Rice", price: 1.1, category: "Food" },
+        { name: "Chicken", price: 5.5, category: "Food" },
+      ];
+
+      const drinks = [
+        { name: "Water", price: 0.6, category: "Drink" },
+        { name: "Juice", price: 1.9, category: "Drink" },
+        { name: "Tea", price: 1.2, category: "Drink" },
+      ];
+
+      const cosmetics = [
+        { name: "Shampoo", price: 3.5, category: "Cosmetic" },
+        { name: "Soap", price: 1.3, category: "Cosmetic" },
+        { name: "Toothpaste", price: 2.1, category: "Cosmetic" },
+      ];
+
+      function generateShoppingList() {
+        const allProducts = [].concat(foods, drinks, cosmetics);
+        let total = 0;
+        for (const product of allProducts) {
+          total += product.price;
+        }
+
+        let html = "<h2>Products</h2><ul>";
+        allProducts.forEach((product) => {
+          html +=
+            "<li>" +
+            product.name +
+            " (" +
+            product.category +
+            ") - " +
+            product.price +
+            "</li>";
+        });
+
+        html += "</ul>";
+        html += "<p>Total price: " + total.toFixed(2) + "</p>";
+        document.querySelector("#result").innerHTML = html;
+      }
+
+      function handleGnerate() {
+        generateShoppingList();
+      }
+
+      document
+        .querySelector("#generate-btn")
+        .addEventListener("click", handleGnerate);
+    </script>
+  </body>
+</html>
