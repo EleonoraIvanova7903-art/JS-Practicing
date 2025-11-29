@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Progress viewport/title</title>
+  </head>
+  <body>
+    <h1>Task Progress View</h1>
+    <button id="calc-btn">Calculate progress</button>
+    <div id="result"></div>
+
+    <script>
+      const tasks = [
+        { name: "Read documentation", completed: true },
+        { name: "Write HTML file", completed: true },
+        { name: "Create JavaScript class", completed: false },
+        { name: "Test application", completed: false },
+        { name: "Fix bugs", completed: true },
+        { name: "Refactor code", completed: false },
+        { name: "Write notes", completed: true },
+      ];
+
+      function calculateProgress(list) {
+        let comletedCount = 0;
+        list.forEach((task) => {
+          if (task.completed) {
+            comletedCount += 1;
+          }
+        });
+
+        const percent = Math.round((comletedCount / list.length) * 100);
+        document.querySelector("#result").innerHTML =
+          "Completed: " + percent + "%";
+      }
+
+      function handleCalculate() {
+        calculateProgress(tasks);
+      }
+
+      document
+        .querySelector("#calc-btn")
+        .addEventListener("click", handleCalculate);
+    </script>
+  </body>
+</html>
