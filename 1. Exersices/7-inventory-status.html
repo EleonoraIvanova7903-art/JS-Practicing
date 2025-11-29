@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Status</title>
+  </head>
+  <body>
+    <h1>Inventory Status</h1>
+    <button id="show-btn">Show inventory</button>
+    <h2>In stock</h2>
+    <div id="in-stock"></div>
+
+    <h2>Out of stock</h2>
+    <div id="out-stock"></div>
+
+    <script>
+      const items = [
+        { name: "Bread", inStock: true },
+        { name: "Milk", inStock: true },
+        { name: "Eggs", inStock: false },
+        { name: "Rice", inStock: true },
+        { name: "Sugar", inStock: false },
+        { name: "Salt", inStock: true },
+        { name: "Butter", inStock: false },
+        { name: "Cheese", inStock: true },
+        { name: "Yogurt", inStock: false },
+        { name: "Coffee", inStock: true },
+      ];
+
+      function renderInventory(list) {
+        let inHtml = "<ul>";
+        let outHtml = "<ul>";
+        for (const item of list) {
+          if (item.inStock) {
+            inHtml += "<li>" + item.name + "</li>";
+          } else {
+            outHtml += "<li>" + item.name + "</li>";
+          }
+        }
+
+        inHtml += "</ul>";
+        outHtml += "</ul>";
+        document.querySelector("#in-stock").innerHTML = inHtml;
+        document.querySelector("#out-stock").innerHTML = outHtml;
+      }
+
+      function handleShowInventory() {
+        renderInventory(items);
+      }
+
+      document
+        .querySelector("#show-btn")
+        .addEventListener("click", handleShowInventory);
+    </script>
+  </body>
+</html>
