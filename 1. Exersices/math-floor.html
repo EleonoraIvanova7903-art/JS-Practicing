@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Floor</title>
+  </head>
+  <body>
+    <h1>Math Floor</h1>
+    <button id="show">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const number = 7.5;
+
+      function showNumber(value) {
+        let text = "";
+        text += "Original number: " + value + "<br>";
+        text += "The Number Floor is: " + Math.floor(value);
+        document.querySelector("#res").innerHTML = text;
+      }
+
+      function handleNumber() {
+        showNumber(number);
+      }
+
+      document.querySelector("#show").addEventListener("click", handleNumber);
+    </script>
+  </body>
+</html>
