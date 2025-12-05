@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Middle Index</title>
+  </head>
+  <body>
+    <h1>Middle Index</h1>
+    <button id="btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const numbers = [1, 3, 5, 11, 55, 88, 9];
+
+      function showNumbers(list) {
+        let act = Math.floor(list.length / 2);
+        let out = "";
+        out += "Array: " + list.join(", ") + "<br>";
+        out += "Middle: " + act + "<br>";
+        out += "Midle number: " + list[act];
+
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleClick() {
+        showNumbers(numbers);
+      }
+
+      document.querySelector("#btn").addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>
