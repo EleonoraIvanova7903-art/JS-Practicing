@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random 0-100</title>
+  </head>
+  <body>
+    <h1>Random 0-100</h1>
+    <button id="btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      function showRandom() {
+        let value = Math.random() * 100;
+        let out = "";
+        out += "Value: " + value.toFixed(2) + "<br>";
+        out += "Floor: " + Math.floor(value) + "<br>";
+        out += "Ceil: " + Math.ceil(value);
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      document.querySelector("#btn").addEventListener("click", showRandom);
+    </script>
+  </body>
+</html>
