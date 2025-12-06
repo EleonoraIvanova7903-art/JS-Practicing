@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Array Index</title>
+  </head>
+  <body>
+    <h1>Random Array Index</h1>
+    <button id="btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const items = ["apple", "banana", "kiwi", "orange", "grape"];
+
+      function showRandomItem(list) {
+        let index = Math.floor(Math.random() * list.length);
+        let out = "";
+        out += "Array: " + list.join(", ") + "<br>";
+        out += "Random index: " + index + "<br>";
+        out += "Item: " + list[index];
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleClick() {
+        showRandomItem(items);
+      }
+
+      document.querySelector("#btn").addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>
