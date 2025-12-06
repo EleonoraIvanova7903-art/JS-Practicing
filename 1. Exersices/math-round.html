@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Round</title>
+  </head>
+  <body>
+    <h2>Math Round</h2>
+    <button id="btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const number = 8.6;
+
+      function showNumber(value) {
+        let text = "";
+        text += "Original Number: " + value + "<br>";
+        text += "Number Round: " + Math.round(value);
+
+        document.querySelector("#res").innerHTML = text;
+      }
+
+      function handleClick() {
+        showNumber(number);
+      }
+
+      document.querySelector("#btn").addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>
