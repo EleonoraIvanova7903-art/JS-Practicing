@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Min From Array</title>
+  </head>
+  <body>
+    <h1>Min From Array</h1>
+    <button id="btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const numbers = [12, 4, 33, 6, 18];
+
+      function showMinMax(list) {
+        let min = Math.min(...list);
+        let max = Math.max(...list);
+        let out = "";
+        out += "Array: " + list.join(", ") + "<br>";
+        out += "Min: " + min + "<br>";
+        out += "Max: " + max;
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handlClick() {
+        showMinMax(numbers);
+      }
+
+      document.querySelector("#btn").addEventListener("click", handlClick);
+    </script>
+  </body>
+</html>
