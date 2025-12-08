@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove task</title>
+  </head>
+  <body>
+    <h2>Remove task</h2>
+    <input type="number" name=" " id="index" placeholder="Index" />
+    <button id="btn">Remove</button>
+    <div id="res"></div>
+
+    <script>
+      const tasks = ["Write", "Read", "Cook", "Train"];
+      function removeTask(list) {
+        const copy = list.slice();
+        const i = Number(document.querySelector("#index").value);
+        let out = "";
+        out += "Original list: " + list.join(", ") + "<br>";
+
+        if (i < 0 || i >= copy.length) {
+          out += "Invalid index.<br>";
+          out += "Current tasks: " + copy.join(", ");
+          document.querySelector("#res").innerHTML = out;
+          return;
+        }
+        let removed = copy.splice(i, 1);
+        out += "Removed task: " + removed + "<br>";
+        out += "Updated tasks: " + copy.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handlClick() {
+        removeTask(tasks);
+      }
+
+      document.querySelector("#btn").addEventListener("click", handlClick);
+    </script>
+  </body>
+</html>
