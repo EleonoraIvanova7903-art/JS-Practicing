@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove index 2</title>
+  </head>
+  <body>
+    <h2>Remove index 2</h2>
+    <button id="btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const citys = ["Sofia", "Paris", "London", "Rome"];
+
+      function insertCities(list) {
+        const copy = list.slice();
+        copy.splice(2, 0, "Berlin", "Madrid");
+        let out = "";
+        out += "Original Cities: " + list.join(", ") + "<br>";
+        out += "Inserted cities: Berlin, Madrid" + "<br>";
+        out += "Updated list: " + copy.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleClick() {
+        insertCities(citys);
+      }
+
+      document.querySelector("#btn").addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>
