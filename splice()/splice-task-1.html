@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove index 2</title>
+  </head>
+  <body>
+    <h2>Remove index 2</h2>
+    <button id="btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const students = ["Ana", "Mira", "Lora", "Toni"];
+      function removeStudent(list) {
+        const copy = list.slice();
+        let removed = copy.splice(1, 2);
+        let out = "";
+        out += "The Students: " + list.join(", ") + "<br>";
+        out += "Removed Students: " + removed.join(", ") + "<br>";
+        out += "Updated List: " + copy.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleClick() {
+        removeStudent(students);
+      }
+
+      document.querySelector("#btn").addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>
