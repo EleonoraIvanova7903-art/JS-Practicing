@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numbers Over 5</title>
+  </head>
+  <body>
+    <h1>Numbers Over 5</h1>
+    <input type="text" id="num" placeholder="Enter number" />
+    <button id="add-btn">Add</button>
+    <button id="show-btn">Show</button>
+    <div id="res"></div>
+
+    <script>
+      const numbers = [];
+
+      function updateOriginal(list) {
+        let out = "";
+        out += "Original: " + list.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleAddNumber() {
+        const value = Number(document.querySelector("#num").value);
+        if (!Number.isNaN(value)) {
+          numbers.push(value);
+        }
+        document.querySelector("#num").value = "";
+        updateOriginal(numbers);
+      }
+
+      function handleShowOverFive() {
+        const filtered = numbers.filter(function (x) {
+          return x > 5;
+        });
+
+        let out = "";
+        out += "Original: " + numbers.join(", ") + "<br>";
+        out += "Filtered (> 5): " + filtered.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      document
+        .querySelector("#add-btn")
+        .addEventListener("click", handleAddNumber);
+      document
+        .querySelector("#show-btn")
+        .addEventListener("click", handleShowOverFive);
+    </script>
+  </body>
+</html>
