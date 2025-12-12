@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Names Starting With M</title>
+  </head>
+  <body>
+    <h1>Names Starting With M</h1>
+    <input type="text" id="name" placeholder="Name..." />
+    <button id="add-btn">Add name</button>
+    <button id="show-btn">Show names with M</button>
+    <div id="res"></div>
+
+    <script>
+      const names = [];
+
+      function updateOriginal(list) {
+        let out = "";
+        out += "Original List: " + list.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function addNames(list, value) {
+        if (value !== "") {
+          list.push(value);
+        }
+      }
+
+      function getNamesStartingWithM(list) {
+        return list.filter(function (n) {
+          return n.startsWith("M");
+        });
+      }
+
+      function showNames(list, filteredList) {
+        let out = "";
+        out += "Original list: " + list.join(", ") + "<br>";
+        out += "Filtered Name (started with M): " + filteredList.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleAddName() {
+        const input = document.querySelector("#name");
+        const value = input.value.trim();
+        addNames(names, value);
+
+        input.value = "";
+        input.focus();
+        updateOriginal(names);
+      }
+
+      function handleShowNamesWithM() {
+        const filtered = getNamesStartingWithM(names);
+        showNames(names, filtered);
+      }
+
+      document
+        .querySelector("#add-btn")
+        .addEventListener("click", handleAddName);
+      document
+        .querySelector("#show-btn")
+        .addEventListener("click", handleShowNamesWithM);
+    </script>
+  </body>
+</html>
