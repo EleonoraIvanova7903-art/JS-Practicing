@@ -17,28 +17,41 @@
 
       function updateOriginal(list) {
         let out = "";
-        out += "Original: " + list.join(", ");
+        out += "Original list: " + list.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function addNumber(list, value) {
+        if (!Number.isNaN(value)) {
+          list.push(value);
+        }
+      }
+
+      function getNumberOverFive(list) {
+        return list.filter(function (x) {
+          return x > 5;
+        });
+      }
+
+      function showNumbers(list, filterdList) {
+        let out = "";
+        out += "Original List: " + list.join(", ") + "<br>";
+        out += "Filtered > 5: " + filterdList.join(", ");
         document.querySelector("#res").innerHTML = out;
       }
 
       function handleAddNumber() {
-        const value = Number(document.querySelector("#num").value);
-        if (!Number.isNaN(value)) {
-          numbers.push(value);
-        }
-        document.querySelector("#num").value = "";
+        const input = document.querySelector("#num");
+        const value = Number(input.value);
+        addNumber(numbers, value);
+        input.value = "";
+        input.focus();
         updateOriginal(numbers);
       }
 
       function handleShowOverFive() {
-        const filtered = numbers.filter(function (x) {
-          return x > 5;
-        });
-
-        let out = "";
-        out += "Original: " + numbers.join(", ") + "<br>";
-        out += "Filtered (> 5): " + filtered.join(", ");
-        document.querySelector("#res").innerHTML = out;
+        const filtered = getNumberOverFive(numbers);
+        showNumbers(numbers, filtered);
       }
 
       document
