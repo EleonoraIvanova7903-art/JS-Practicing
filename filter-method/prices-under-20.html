@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price Under 20</title>
+  </head>
+  <body>
+    <h1>Price Under 20</h1>
+    <input type="text" id="price" placeholder="Price..." />
+    <button id="add-btn">Add Price</button>
+    <button id="show-btn">Show < 20</button>
+    <div id="res"></div>
+
+    <script>
+      const prices = [];
+
+      function updatePrice(list) {
+        let out = "";
+        out += "Update List of Price: " + list.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function addPrice(list, value) {
+        if (!Number.isNaN(value)) {
+          list.push(value);
+        }
+      }
+
+      function getPriceUnderTwenty(list) {
+        return list.filter(function (p) {
+          return p < 20;
+        });
+      }
+
+      function showPrices(list, filteredList) {
+        let out = "";
+        out += "Original list: " + list.join(", ") + "<br>";
+        out += "List of Price < 20: " + filteredList.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleAddPrice() {
+        const input = document.querySelector("#price");
+        const value = Number(input.value);
+        addPrice(prices, value);
+        input.value = "";
+        input.focus();
+        updatePrice(prices);
+      }
+
+      function handleShowPricesUnderTwenty() {
+        const filtered = getPriceUnderTwenty(prices);
+        showPrices(prices, filtered);
+      }
+
+      document
+        .querySelector("#add-btn")
+        .addEventListener("click", handleAddPrice);
+      document
+        .querySelector("#show-btn")
+        .addEventListener("click", handleShowPricesUnderTwenty);
+    </script>
+  </body>
+</html>
