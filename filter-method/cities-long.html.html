@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cities Longer Than 5</title>
+  </head>
+  <body>
+    <h1>Cities Longer Than 5</h1>
+    <input type="text" id="city" placeholder="City..." />
+    <button id="add-btn">Add City</button>
+    <button id="show-btn">Show long cities</button>
+    <div id="res"></div>
+
+    <script>
+      const cities = [];
+      function updateOriginal(list) {
+        let out = "";
+        out += "Original: " + list.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function addCity(list, value) {
+        if (value !== "") {
+          list.push(value);
+        }
+      }
+
+      function getLongCities(list) {
+        return list.filter(function (c) {
+          return c.length > 5;
+        });
+      }
+
+      function showCities(list, filteredList) {
+        let out = "";
+        out += "Original: " + list.join(", ") + "<bt>";
+        out += "Filtered list: " + filteredList.join(", ");
+        document.querySelector("#res").innerHTML = out;
+      }
+
+      function handleAddCity() {
+        const input = document.querySelector("#city");
+        const value = input.value.trim();
+        addCity(cities, value);
+        input.value = "";
+        input.focus();
+        updateOriginal(cities);
+      }
+
+      function handleShowLongCities() {
+        const filtered = getLongCities(cities);
+        showCities(cities, filtered);
+      }
+
+      document
+        .querySelector("#add-btn")
+        .addEventListener("click", handleAddCity);
+      document
+        .querySelector("#show-btn")
+        .addEventListener("click", handleShowLongCities);
+    </script>
+  </body>
+</html>
